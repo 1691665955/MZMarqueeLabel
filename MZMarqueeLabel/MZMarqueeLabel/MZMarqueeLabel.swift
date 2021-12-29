@@ -8,21 +8,21 @@
 import UIKit
 
 /// 文字滚动方向
-enum MZMarqueeDirection {
+public enum MZMarqueeDirection {
     case RightToLeft    //  从右向左滚动
     case LeftToRight    //  从左向右滚动
 }
 
 
 /// 文字滚动速度、每秒多少个字
-enum MZMarqueeSpeed {
+public enum MZMarqueeSpeed {
     case Slow       //  3
     case Middle     //  4
     case Fast       //  5
     case from(Int)  //  自定义
 }
 
-class MZMarqueeLabel: UIView {
+open class MZMarqueeLabel: UIView {
 
     private lazy var firstLabel: UILabel = {
         let label = UILabel()
@@ -33,12 +33,12 @@ class MZMarqueeLabel: UIView {
         return label
     }()
 
-    override init(frame: CGRect) {
+    public override init(frame: CGRect) {
         super.init(frame: frame)
         self.setup()
     }
     
-    required init?(coder: NSCoder) {
+    public required init?(coder: NSCoder) {
         super.init(coder: coder)
         self.setup()
     }
@@ -56,7 +56,7 @@ class MZMarqueeLabel: UIView {
     ///   - whiteSpace: 滚动间隔文字
     ///   - direction: 滚动方向
     ///   - speed: 滚动速度
-    func setupText(_ text: String, font: UIFont?, textColor: UIColor?, whiteSpace: String = "    ", direction: MZMarqueeDirection = .RightToLeft, speed: MZMarqueeSpeed = .Middle) {
+    public func setupText(_ text: String, font: UIFont?, textColor: UIColor?, whiteSpace: String = "    ", direction: MZMarqueeDirection = .RightToLeft, speed: MZMarqueeSpeed = .Middle) {
         firstLabel.text = "\(text)\(whiteSpace)"
         if font != nil {
             firstLabel.font = font
